@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Processor</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input { padding: 5px; font-size: 16px; }
+        button { padding: 5px 10px; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Enter 5-Digit Number</h2>
+    <input type="number" id="inputNumber" min="10000" max="99999" placeholder="e.g., 20102">
+    <button onclick="processNumber()">Process</button>
+    <div id="result"></div>
+
+    <script>
+        function processNumber() {
+            const input = document.getElementById('inputNumber').value;
+            if (input.length !== 5 || isNaN(input)) {
+                document.getElementById('result').innerText = "Please enter a valid 5-digit number!";
+                return;
+            }
+
+            const lastKM = input.slice(-3); // Last 3 digits as last KM
+            const meterKM = input + "2000"; // Append "2000" as per your example
+            const command = `=I13&H13&J13`; // Example command (adjust as needed)
+
+            document.getElementById('result').innerText = 
+                `Last KM: ${lastKM}\nMeter KM: ${meterKM}\nCommand: ${command}`;
+        }
+    </script>
+</body>
+</html>
