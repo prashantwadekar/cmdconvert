@@ -1,2 +1,0 @@
-# cmdconvert
-command converter
